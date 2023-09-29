@@ -25,4 +25,9 @@ public class FuelRecordDAO {
     public FuelRecord show(int id) {
         return records.stream().filter(fuelRecord->fuelRecord.getId() == id).findAny().orElse(null);
     }
+
+    public void save(FuelRecord record) {
+        record.setId(++RECORDS_COUNT);
+        records.add(record);
+    }
 }

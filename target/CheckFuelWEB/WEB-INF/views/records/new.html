@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Record</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/records}" th:object="${record}">
+  <label for="km">Enter km: </label>
+  <input type="text" th:field="*{km}" id="km">
+  <br/>
+  <label for="date">Enter date: </label>
+  <input type="text" th:field="*{date}" id="date">
+  <br/>
+  <input type="submit" value="Create"/>
+</form>
+</body>
+</html>

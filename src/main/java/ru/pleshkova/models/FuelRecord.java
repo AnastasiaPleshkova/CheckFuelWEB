@@ -5,6 +5,10 @@ public class FuelRecord {
     private String km;
     private String date;
 
+    public FuelRecord(){
+
+    }
+
     public FuelRecord(int id, String km, String date) {
         this.id = id;
         this.km = km;
