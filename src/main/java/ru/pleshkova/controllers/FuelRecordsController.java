@@ -13,8 +13,11 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/records")
 public class FuelRecordsController {
+    private final FuelRecordDAO fuelRecordDAO;
     @Autowired
-    private FuelRecordDAO fuelRecordDAO;
+    public FuelRecordsController(FuelRecordDAO fuelRecordDAO) {
+        this.fuelRecordDAO = fuelRecordDAO;
+    }
 
     @GetMapping()
     public String index(Model model) {

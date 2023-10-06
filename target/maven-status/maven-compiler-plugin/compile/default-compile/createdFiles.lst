@@ -1,0 +1,5 @@
+ru\pleshkova\config\SpringConfig.class
+ru\pleshkova\config\DispatcherInit.class
+ru\pleshkova\controllers\FuelRecordsController.class
+ru\pleshkova\models\FuelRecord.class
+ru\pleshkova\dao\FuelRecordDAO.class
