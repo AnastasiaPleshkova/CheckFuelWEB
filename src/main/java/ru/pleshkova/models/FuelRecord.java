@@ -1,8 +1,17 @@
 package ru.pleshkova.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 public class FuelRecord {
     private int id;
+
+    @Min(value = 0, message = "Value should be positive")
     private String km;
+    @NotEmpty(message = "Date cant be empty")
     private String date;
 
     public FuelRecord(){

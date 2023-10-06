@@ -3,9 +3,12 @@ package ru.pleshkova.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.pleshkova.dao.FuelRecordDAO;
 import ru.pleshkova.models.FuelRecord;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/records")
@@ -29,7 +32,9 @@ public class FuelRecordsController {
         return "records/new";
     }
     @PostMapping()
-    public String create(@ModelAttribute("record") FuelRecord record){
+    public String create(@ModelAttribute("record") @Valid FuelRecord record, BindingResult bindingResult){
+        if (bindingResult.hasErrors())
+            return "records/new";
         fuelRecordDAO.save(record);
         return "redirect:/records";
     }
@@ -41,7 +46,11 @@ public class FuelRecordsController {
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("records") FuelRecord record, @PathVariable("id") int id) {
+    public String update(@ModelAttribute("record") @Valid FuelRecord record, BindingResult bindingResult,
+                         @PathVariable("id") int id) {
+        if (bindingResult.hasErrors())
+            return "records/edit";
+
         fuelRecordDAO.update(id, record);
         return "redirect:/records";
     }

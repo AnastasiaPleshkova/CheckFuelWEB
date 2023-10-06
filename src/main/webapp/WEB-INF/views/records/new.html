@@ -8,9 +8,11 @@
 <form th:method="POST" th:action="@{/records}" th:object="${record}">
   <label for="km">Enter km: </label>
   <input type="text" th:field="*{km}" id="km">
+  <div style="color:red" th:if="${#fields.hasErrors('km')}" th:errors="*{km}">km error</div>
   <br/>
   <label for="date">Enter date: </label>
   <input type="text" th:field="*{date}" id="date">
+    <div style="color:red" th:if="${#fields.hasErrors('date')}" th:errors="*{date}">date error</div>
   <br/>
   <input type="submit" value="Create"/>
 </form>

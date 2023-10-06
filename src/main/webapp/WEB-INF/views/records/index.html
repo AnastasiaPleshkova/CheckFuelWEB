@@ -7,7 +7,7 @@
 <body>
 <dig th:each="record : ${records}">
     <a th:href="@{/records/{id}(id=${record.getId()})}"
-       th:text="${record.getDate()}">record</a> <br>
+       th:text="${record.getDate() + ', ' + record.getKm()}">record</a> <br>
 </dig>
 
 <br/>
