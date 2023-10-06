@@ -8,5 +8,7 @@
 <p th:text="${record.getId()}"> VALUE ID </p>
 <p th:text="${record.getKm()}"> VALUE KM</p>
 <p th:text="${record.getDate()}"> VALUE Date</p>
+
+<a th:href="@{/records/{id}/edit(id=${record.getId()})}">Edit</a>
 </body>
 </html>

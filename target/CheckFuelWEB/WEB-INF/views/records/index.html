@@ -7,9 +7,10 @@
 <body>
 <dig th:each="record : ${records}">
     <a th:href="@{/records/{id}(id=${record.getId()})}"
-       th:text="${record.getId()}">record</a>
-<!--    <p th:text="${record.getDate()}"> VALUE Date</p>-->
+       th:text="${record.getDate()}">record</a> <br>
 </dig>
-<a th:href="/records/new">Click here to create new record</a>
+
+<a href="/records/new">Click to create new record</a>
+
 </body>
 </html>

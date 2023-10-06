@@ -30,4 +30,10 @@ public class FuelRecordDAO {
         record.setId(++RECORDS_COUNT);
         records.add(record);
     }
+
+    public void update(int id, FuelRecord updateRecord) {
+        FuelRecord recordToBeUpdated = show(id);
+        recordToBeUpdated.setDate(updateRecord.getDate());
+        recordToBeUpdated.setKm(updateRecord.getKm());
+    }
 }
