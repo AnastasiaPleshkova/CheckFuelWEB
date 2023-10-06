@@ -36,4 +36,8 @@ public class FuelRecordDAO {
         recordToBeUpdated.setDate(updateRecord.getDate());
         recordToBeUpdated.setKm(updateRecord.getKm());
     }
+
+    public void delete(int id) {
+        records.removeIf(r -> r.getId() == id);
+    }
 }

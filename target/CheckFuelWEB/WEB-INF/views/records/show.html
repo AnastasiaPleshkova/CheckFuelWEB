@@ -10,5 +10,11 @@
 <p th:text="${record.getDate()}"> VALUE Date</p>
 
 <a th:href="@{/records/{id}/edit(id=${record.getId()})}">Edit</a>
+
+<form th:method="DELETE" th:action="@{/records/{id}(id=${record.getId()})}">
+    <input type="submit" value="Delete" />
+
+
+</form>
 </body>
 </html>

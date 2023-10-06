@@ -45,4 +45,10 @@ public class FuelRecordsController {
         fuelRecordDAO.update(id, record);
         return "redirect:/records";
     }
+
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable("id") int id) {
+        fuelRecordDAO.delete(id);
+        return "redirect:/records";
+    }
 }
