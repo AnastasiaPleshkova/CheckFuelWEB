@@ -75,8 +75,15 @@ public class FuelRecordDAO {
     }
 
     public void save(FuelRecord record) {
-        record.setId(++RECORDS_COUNT);
-//        records.add(record);
+        try {
+            Statement statement = connection.createStatement();
+            String SQL = "INSERT INTO archive_records (currentKM, date, litres, kmonlitresREAL) VALUES('" +
+                    record.getKm() + "', '" + record.getDate() + "', 0, 0);";
+            statement.executeUpdate(SQL);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void update(int id, FuelRecord updateRecord) {
