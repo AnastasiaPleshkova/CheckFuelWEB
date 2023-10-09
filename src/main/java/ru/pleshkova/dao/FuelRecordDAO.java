@@ -1,5 +1,6 @@
 package ru.pleshkova.dao;
 
+import com.mysql.cj.x.protobuf.MysqlxPrepare;
 import org.springframework.stereotype.Component;
 import ru.pleshkova.models.FuelRecord;
 import java.io.BufferedReader;
@@ -70,29 +71,51 @@ public class FuelRecordDAO {
     }
 
     public FuelRecord show(int id) {
-//        return records.stream().filter(fuelRecord->fuelRecord.getId() == id).findAny().orElse(null);
-        return null;
+        FuelRecord record = null;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "SELECT * FROM archive_records WHERE idarchive_records=?");
+            preparedStatement.setInt(1, id);
+            ResultSet rs = preparedStatement.executeQuery();
+            rs.next();
+            record = new FuelRecord(rs.getInt("idarchive_records"), rs.getString("currentKM"), rs.getString("date"));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return record;
     }
 
     public void save(FuelRecord record) {
         try {
-            Statement statement = connection.createStatement();
-            String SQL = "INSERT INTO archive_records (currentKM, date, litres, kmonlitresREAL) VALUES('" +
-                    record.getKm() + "', '" + record.getDate() + "', 0, 0);";
-            statement.executeUpdate(SQL);
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO archive_records " +
+                    "(currentKM, date, litres, kmonlitresREAL) VALUES(?, ?, 0, 0)");
+            preparedStatement.setString(1, record.getKm());
+            preparedStatement.setString(2, record.getDate());
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public void update(int id, FuelRecord updateRecord) {
-        FuelRecord recordToBeUpdated = show(id);
-        recordToBeUpdated.setDate(updateRecord.getDate());
-        recordToBeUpdated.setKm(updateRecord.getKm());
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE archive_records SET currentKM=?, date=? WHERE idarchive_records = ?");
+            preparedStatement.setString(1, updateRecord.getKm());
+            preparedStatement.setString(2, updateRecord.getDate());
+            preparedStatement.setInt(3, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void delete(int id) {
-//        records.removeIf(r -> r.getId() == id);
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM archive_records WHERE idarchive_records = ?");
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
