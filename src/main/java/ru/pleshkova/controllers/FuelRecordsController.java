@@ -31,7 +31,6 @@ public class FuelRecordsController {
     }
     @GetMapping("/new")
     public String newRecord(@ModelAttribute("record") FuelRecord record) {
-//        model.addAttribute("record", new FuelRecord());
         return "records/new";
     }
     @PostMapping()
@@ -53,7 +52,6 @@ public class FuelRecordsController {
                          @PathVariable("id") int id) {
         if (bindingResult.hasErrors())
             return "records/edit";
-
         fuelRecordDAO.update(id, record);
         return "redirect:/records";
     }

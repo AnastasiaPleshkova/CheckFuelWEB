@@ -1,20 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Record</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<p th:text="${record.getId()}"> VALUE ID </p>
-<p th:text="${record.getKm()}"> VALUE KM</p>
-<p th:text="${record.getDate()}"> VALUE Date</p>
+    <header>
+        <h1>Show record</h1>
+    </header>
+    <main>
 
-<a th:href="@{/records/{id}/edit(id=${record.getId()})}">Edit</a>
+        <body>
+            <p th:text="${record.getId()}"> VALUE ID </p>
+            <p th:text="${record.getKm()}"> VALUE KM</p>
+            <p th:text="${record.getDate()}"> VALUE Date</p>
+            <section>
+                <a th:href="@{/records/{id}/edit(id=${record.getId()})}">Edit</a>
 
-<form th:method="DELETE" th:action="@{/records/{id}(id=${record.getId()})}">
-    <input type="submit" value="Delete" />
+                <form th:method="DELETE" th:action="@{/records/{id}(id=${record.getId()})}">
 
-
-</form>
+                    <input type="submit" value="Delete" />
+                </form>
+                <a href="/records">Back</a>
+            </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 CheckFuel WEB</p>
+    </footer>
 </body>
+
 </html>

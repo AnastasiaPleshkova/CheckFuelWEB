@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Record</title>
+</head>
+<body>
+<p th:text="${record.getId()}"> VALUE ID </p>
+<p th:text="${record.getKm()}"> VALUE KM</p>
+<p th:text="${record.getDate()}"> VALUE Date</p>
+
+<a th:href="@{/records/{id}/edit(id=${record.getId()})}">Edit</a>
+
+<form th:method="DELETE" th:action="@{/records/{id}(id=${record.getId()})}">
+    <input type="submit" value="Delete" />
+
+
+</form>
+</body>
+</html>

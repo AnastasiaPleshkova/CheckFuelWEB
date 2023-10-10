@@ -2,18 +2,31 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All records</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<dig th:each="record : ${records}">
-    <a th:href="@{/records/{id}(id=${record.getId()})}"
-       th:text="${record.getDate() + ', ' + record.getKm()}">record</a> <br>
-</dig>
-
-<br/>
-<hr/>
-
-<a href="/records/new">Click to create new record</a>
-
+    <header>
+        <h1>All records</h1>
+    </header>
+    <main>
+        <section>
+            <h2>History</h2>
+            <ul>
+                <dig th:each="record : ${records}">
+                    <a th:href="@{/records/{id}(id=${record.getId()})}"
+                       th:text="${record.getDate() + ', ' + record.getKm()}">record</a> <br>
+                </dig>
+                
+            </ul>
+        </section>
+        <section>
+            <a href="/records/new">Add new record</a>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 CheckFuel WEB</p>
+    </footer>
 </body>
 </html>

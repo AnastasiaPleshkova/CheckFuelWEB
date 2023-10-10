@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All records</title>
+</head>
+<body>
+<dig th:each="record : ${records}">
+    <a th:href="@{/records/{id}(id=${record.getId()})}"
+       th:text="${record.getDate() + ', ' + record.getKm()}">record</a> <br>
+</dig>
+
+<br/>
+<hr/>
+
+<a href="/records/new">Click to create new record</a>
+
+</body>
+</html>
