@@ -21,11 +21,12 @@
             <input type="text" th:field="*{date}" id="date">
             <div style="color:red" th:if="${#fields.hasErrors('date')}" th:errors="*{date}">date error</div>
             <br />
-            <input type="submit" value="Create" />
+            <button type="submit">Create</button>
         </form>
-        <section>
-            <a href="/records">Cancel</a>
-        </section>
+
+            <br/>
+            <a href="/records"><button class="cancel">Cancel</button></a>
+
     </main>
     <footer>
         <p>&copy; 2023 CheckFuel WEB</p>

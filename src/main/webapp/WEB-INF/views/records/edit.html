@@ -21,10 +21,10 @@
             <input type="text" th:field="*{date}" id="date" />
             <div style="color:red" th:if="${#fields.hasErrors('date')}" th:errors="*{date}">date Error</div>
             <br />
-            <input type="submit" value="Update!" />
+            <button type="submit">Update</button>
         </form>
         <section>
-            <a href="/records">Cancel</a>
+            <a href="/records"><button class="cancel">Cancel</button></a>
         </section>
     </main>
     <footer>

@@ -78,6 +78,15 @@ button[type="submit"] {
     cursor: pointer;
 }
 
+button.cancel {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
 /* Подвал */
 footer {
     text-align: center;

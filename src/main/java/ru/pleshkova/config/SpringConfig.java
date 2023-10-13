@@ -22,7 +22,7 @@ import java.util.Objects;
 @Configuration
 @ComponentScan("ru.pleshkova")
 @EnableWebMvc
-@PropertySource("classpath:ru/pleshkova/db/database.properties")
+@PropertySource("classpath:db/database.properties")
 public class SpringConfig implements WebMvcConfigurer {
     private final ApplicationContext applicationContext;
     private final Environment environment;
@@ -75,6 +75,6 @@ public class SpringConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/css/**")
-                .addResourceLocations("classpath:ru/pleshkova/css/");
+                .addResourceLocations("classpath:static/css/");
     }
 }
